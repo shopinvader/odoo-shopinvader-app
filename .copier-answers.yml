@@ -1,0 +1,39 @@
+# Do NOT update manually; changes here will be overwritten by Copier
+_commit: v1.33
+_src_path: https://github.com/OCA/oca-addons-repo-template.git
+additional_ruff_rules: []
+ci: GitHub
+convert_readme_fragments_to_markdown: true
+enable_checklog_odoo: false
+generate_requirements_txt: true
+github_check_license: true
+github_ci_extra_env: {}
+github_enable_codecov: true
+github_enable_makepot: true
+github_enable_stale_action: true
+github_enforce_dev_status_compatibility: false
+include_wkhtmltopdf: false
+odoo_test_flavor: OCB
+odoo_version: 16.0
+org_name: Shopinvader
+org_slug: shopinvader
+rebel_module_groups: []
+repo_description: 'Shopinvader is made up of several small, generic building blocks.
+    This project offers a ready-to-use, opinionated setup based on these modules.
+
+    As it is an opinionated distribution, these apps may not fit all your needs. The
+    aim of this project is not to provide a one-size-fits-all solution, but rather
+    to offer a tailored setup that should cover the most common business cases. If
+    you have specific requirements, you do not need to install these apps. Instead,
+    you can build your own solution and cherry-pick only the needed components from
+    the odoo-shopinvader repository.
+
+    Feedback is welcome (please open an issue), but be aware that, as this is an opinionated
+    project, we may not share the same vision of what constitutes a common business
+    case.'
+repo_name: Shopinvader Opinionated Starter Kit
+repo_slug: odoo-shopinvader-app
+repo_website: https://github.com/shopinvader/odoo-shopinvader-app
+use_pyproject_toml: true
+use_ruff: true
+

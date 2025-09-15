@@ -182,18 +182,19 @@ class ShopinvaderNewChannelWizard(models.TransientModel):
         for index in se_backend.index_ids:
             index.export_settings()
         self.channel_id.search_engine_id = se_backend.id
+        root_path = f"/shopinvader-api/{slugify(self.name)}"
         endpoint = self.env["fastapi.endpoint"].create(
             {
                 "name": self.name,
                 "app": "shopinvader",
-                "root_path": f"/shopinvader-api/{slugify(self.name)}",
+                "root_path": root_path,
                 "user_id": self._create_api_user().id,
                 "save_http_session": False,
                 "directory_id": self._create_directory().id,
                 "sale_channel_id": self.channel_id.id,
                 "public_url": self.frontend_public_url,
                 "public_api_url": urllib.parse.urljoin(
-                    self.frontend_public_url, "/shopinvader"
+                    self.frontend_public_url, root_path
                 ),
             }
         )

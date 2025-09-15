@@ -46,6 +46,8 @@
         "wizards/shopinvader_new_channel_wizard_view.xml",
         "views/sale_channel_view.xml",
         "security/ir.model.access.csv",
+        "data/fs_storage.xml",
     ],
     "demo": [],
+    "application": True,
 }

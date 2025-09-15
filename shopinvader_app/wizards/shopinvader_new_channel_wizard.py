@@ -28,7 +28,11 @@ class ShopinvaderNewChannelWizard(models.TransientModel):
     )
     se_backend_type = fields.Selection(
         selection=lambda self: self.env["se.backend"]._fields["backend_type"].selection,
-        string="Type",
+        string="Search Engine Type",
+        required=True,
+    )
+    se_backend_host = fields.Char(
+        string="Search Engine Host",
         required=True,
     )
     lang_ids = fields.Many2many(
@@ -61,12 +65,15 @@ class ShopinvaderNewChannelWizard(models.TransientModel):
                 "product.brand": ES_DEFAULT_BRAND_CONFIG,
             }[model.model]
             if body:
-                return self.env["se.index.config"].create(
+                config = self.env["se.index.config"].create(
                     {
                         "name": f"{self.name} - {model.name}",
-                        "body": body,
                     }
                 )
+                # TODO solve issue in search-engine with the default
+                # value of body_str
+                config.body = body
+                return config
         return None
 
     def _prepare_index_vals(self, model, lang):
@@ -104,20 +111,21 @@ class ShopinvaderNewChannelWizard(models.TransientModel):
             ("large", 600, 600),
             ("xlarge", 1000, 1000),
         ]
-        field_id = {
-            "product.product": self.env.ref(
+        xmlid = {
+            "product.product": (
                 "fs_product_multi_image.field_product_product__variant_image_ids"
-            ).id,
-            "product.category": self.env.ref(
+            ),
+            "product.category": (
                 "fs_product_multi_image.field_product_category__image_ids"
-            ).id,
-            "product.brand": self.env.ref(
+            ),
+            "product.brand": (
                 "fs_product_brand_multi_image.field_product_brand__image_ids"
-            ).id,
+            ),
         }[model.model]
+        field = self.env.ref(xmlid)
         return {
             "model_id": model.id,
-            "field_id": field_id,
+            "field_id": field.id,
             "size_ids": [self._get_or_create_size(size).id for size in default_sizes],
         }
 
@@ -158,12 +166,17 @@ class ShopinvaderNewChannelWizard(models.TransientModel):
                 indexes.append(Command.create(self._prepare_index_vals(model, lang)))
             thumbnails.append(Command.create(self._prepare_thumbnail_vals(model)))
 
+        ssl = self.se_backend_host.startswith("https")
+
         se_backend = self.env["se.backend"].create(
             {
                 "name": self.name,
                 "backend_type": self.se_backend_type,
                 "index_ids": indexes,
                 "image_field_thumbnail_size_ids": thumbnails,
+                "image_data_url_strategy": "storage_url",
+                "ssl": ssl,
+                "es_server_host": self.se_backend_host,
             }
         )
         self.channel_id.search_engine_id = se_backend.id

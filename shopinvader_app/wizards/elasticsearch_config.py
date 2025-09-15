@@ -32,15 +32,7 @@ ES_DEFAULT_PRODUCT_CONFIG = {
     },
     "mappings": {
         "properties": {
-            "hierarchicalCategories": {
-                "type": "nested",
-                "properties": {
-                    "ancestors": {"type": "keyword"},
-                    "order": {"type": "integer"},
-                    "value": {"type": "keyword"},
-                    "level": {"type": "integer"},
-                },
-            },
+            "categories": {"type": "nested"},
             "url_key": {"type": "keyword"},
             "variant_attributes": {
                 "properties": {"color": {"type": "text", "fielddata": True}}

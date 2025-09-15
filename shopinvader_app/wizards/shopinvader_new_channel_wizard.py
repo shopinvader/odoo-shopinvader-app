@@ -179,6 +179,8 @@ class ShopinvaderNewChannelWizard(models.TransientModel):
                 "es_server_host": self.se_backend_host,
             }
         )
+        for index in se_backend.index_ids:
+            index.export_settings()
         self.channel_id.search_engine_id = se_backend.id
         endpoint = self.env["fastapi.endpoint"].create(
             {

@@ -198,5 +198,5 @@ class ShopinvaderNewChannelWizard(models.TransientModel):
                 ),
             }
         )
-        endpoint.action_sync_registry()
+        endpoint.with_delay().action_sync_registry()
         return True

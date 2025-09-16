@@ -183,7 +183,7 @@ class ShopinvaderNewChannelWizard(models.TransientModel):
             index.export_settings()
         self.channel_id.search_engine_id = se_backend.id
         root_path = f"/shopinvader-api/{slugify(self.name)}"
-        endpoint = self.env["fastapi.endpoint"].create(
+        self.env["fastapi.endpoint"].create(
             {
                 "name": self.name,
                 "app": "shopinvader",
@@ -198,5 +198,4 @@ class ShopinvaderNewChannelWizard(models.TransientModel):
                 ),
             }
         )
-        endpoint.with_delay().action_sync_registry()
         return True

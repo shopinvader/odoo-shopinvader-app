@@ -3,6 +3,7 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
 import urllib.parse
+from urllib.parse import urlparse
 
 from odoo import fields, models
 from odoo.fields import Command
@@ -64,17 +65,19 @@ class ShopinvaderNewChannelWizard(models.TransientModel):
                 "product.category": ES_DEFAULT_CATEGORY_CONFIG,
                 "product.brand": ES_DEFAULT_BRAND_CONFIG,
             }[model.model]
-            if body:
-                config = self.env["se.index.config"].create(
-                    {
-                        "name": f"{self.name} - {model.name}",
-                    }
-                )
-                # TODO solve issue in search-engine with the default
-                # value of body_str
-                config.body = body
-                return config
-        return None
+        elif self.se_backend_type == "typesense":
+            body = {"fields": [{"name": "name", "type": "string"}]}
+        if body:
+            config = self.env["se.index.config"].create(
+                {
+                    "name": f"{self.name} - {model.name}",
+                }
+            )
+            # TODO solve issue in search-engine with the default
+            # value of body_str
+            config.body = body
+            return config
+        return self.env["se.index.config"]
 
     def _prepare_index_vals(self, model, lang):
         return {
@@ -168,22 +171,33 @@ class ShopinvaderNewChannelWizard(models.TransientModel):
 
         ssl = self.se_backend_host.startswith("https")
 
-        se_backend = self.env["se.backend"].create(
-            {
-                "name": self.name,
-                "backend_type": self.se_backend_type,
-                "index_ids": indexes,
-                "image_field_thumbnail_size_ids": thumbnails,
-                "image_data_url_strategy": "storage_url",
-                "ssl": ssl,
-                "es_server_host": self.se_backend_host,
-            }
-        )
+        vals = {
+            "name": self.name,
+            "backend_type": self.se_backend_type,
+            "index_ids": indexes,
+            "image_field_thumbnail_size_ids": thumbnails,
+            "image_data_url_strategy": "storage_url",
+            "ssl": ssl,
+        }
+        if self.se_backend_type == "elasticsearch":
+            vals["es_server_host"] = self.se_backend_host
+        elif self.se_backend_type == "typesense":
+            host = urlparse(self.se_backend_host)
+            vals.update(
+                {
+                    "ts_server_host": host.hostname,
+                    "ts_server_port": host.port,
+                    "ts_server_protocol": host.scheme,
+                    "ts_api_key": "xyz",  # default password
+                }
+            )
+        se_backend = self.env["se.backend"].create(vals)
         for index in se_backend.index_ids:
-            index.export_settings()
+            if index.config_id:
+                index.export_settings()
         self.channel_id.search_engine_id = se_backend.id
         root_path = f"/shopinvader-api/{slugify(self.name)}"
-        self.env["fastapi.endpoint"].create(
+        endpoint = self.env["fastapi.endpoint"].create(
             {
                 "name": self.name,
                 "app": "shopinvader",
@@ -198,4 +212,8 @@ class ShopinvaderNewChannelWizard(models.TransientModel):
                 ),
             }
         )
+        # sync endpoint twice
+        # see issue : https://github.com/OCA/rest-framework/issues/391
+        endpoint.action_sync_registry()
+        endpoint.action_sync_registry()
         return True

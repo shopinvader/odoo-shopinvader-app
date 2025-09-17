@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <record id="res_config_settings_view_form" model="ir.ui.view">
+        <field name="model">res.config.settings</field>
+        <field name="priority" eval="10" />
+        <field name="inherit_id" ref="sale.res_config_settings_view_form" />
+        <field name="arch" type="xml">
+            <div data-key="sale_management" position="inside">
+                <h2>Shopinvader</h2>
+                <div
+                    class="row mt16 o_settings_container"
+                    name="shopinvader_setting_container"
+                >
+                  <div
+                        class="col-12 col-lg-6 o_setting_box"
+                        id="shopinvader_loyalty_setting"
+                    >
+                      <div class="o_setting_left_pane">
+                          <field name="module_shopinvader_api_sale_loyalty" />
+                      </div>
+                      <div class="o_setting_right_pane">
+                          <label for="module_shopinvader_api_sale_loyalty" />
+                          <div class="text-muted">
+                              <em
+                                    attrs="{'invisible': [('module_shopinvader_api_sale_loyalty','=',False)]}"
+                                >Warning: this option will install the 'Shopinvader Api Sale Loyalty' module.</em>
+                          </div>
+                      </div>
+                  </div>
+                  <div
+                        class="col-12 col-lg-6 o_setting_box"
+                        id="shopinvader_whish_list_setting"
+                    >
+                      <div class="o_setting_left_pane">
+                          <field name="module_shopinvader_api_wishlist" />
+                      </div>
+                      <div class="o_setting_right_pane">
+                          <label for="module_shopinvader_api_wishlist" />
+                          <div class="text-muted">
+                              <em
+                                    attrs="{'invisible': [('module_shopinvader_api_wishlist','=',False)]}"
+                                >Warning: this option will install the 'Shopinvader Api Wishlist' module.</em>
+                          </div>
+                      </div>
+                  </div>
+               </div>
+            </div>
+        </field>
+    </record>
+
+</odoo>

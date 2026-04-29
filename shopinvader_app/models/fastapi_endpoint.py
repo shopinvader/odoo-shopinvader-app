@@ -10,8 +10,8 @@ from fastapi import APIRouter, FastAPI
 from odoo import api, fields, models
 
 from odoo.addons.fastapi.dependencies import authenticated_partner_impl
-from odoo.addons.fastapi_auth_partner.routers.auth import auth_router
-from odoo.addons.shopinvader_api_address.routers.address_service import address_router
+from odoo.addons.fastapi_auth_partner.routers import auth_router
+from odoo.addons.shopinvader_api_address.routers import address_router
 from odoo.addons.shopinvader_api_cart.routers import cart_router
 from odoo.addons.shopinvader_api_customer.routers import customer_router
 from odoo.addons.shopinvader_api_delivery_carrier.routers import (

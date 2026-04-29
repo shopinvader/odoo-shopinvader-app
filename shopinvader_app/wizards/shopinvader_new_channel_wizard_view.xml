@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
-
     <record id="shopinvader_new_channel_wizard_view_form" model="ir.ui.view">
         <field name="model">shopinvader.new.channel.wizard</field>
         <field name="arch" type="xml">
@@ -37,5 +36,4 @@
         <field name="context">{}</field>
         <field name="target">new</field>
     </record>
-
 </odoo>

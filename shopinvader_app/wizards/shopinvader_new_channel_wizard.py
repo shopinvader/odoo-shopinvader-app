@@ -5,10 +5,10 @@
 import urllib.parse
 from urllib.parse import urlparse
 
+from slugify import slugify
+
 from odoo import fields, models
 from odoo.fields import Command
-
-from odoo.addons.http_routing.models.ir_http import slugify
 
 from .elasticsearch_config import (
     ES_DEFAULT_BRAND_CONFIG,

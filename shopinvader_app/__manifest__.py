@@ -12,7 +12,7 @@
         - API for common case (cart, sale, picking, invoice...)
         - Custom payment provider
         """,
-    "version": "16.0.0.0.1",
+    "version": "18.0.1.0.0",
     "license": "AGPL-3",
     "author": "Akretion",
     "website": "https://github.com/shopinvader/odoo-shopinvader-app",
@@ -48,6 +48,5 @@
         "security/ir.model.access.csv",
         "data/fs_storage.xml",
     ],
-    "demo": [],
     "application": True,
 }

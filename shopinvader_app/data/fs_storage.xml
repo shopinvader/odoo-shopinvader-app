@@ -2,7 +2,6 @@
 <!-- Copyright 2019 ACSONE SA/NV
      License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
 <odoo noupdate="1">
-
     <!--
         TODO we should provide a simple way to serve image for testing purpose
         Implementing a public option on the fs_backend to serve the image ?:q
@@ -19,7 +18,6 @@
         <field name="use_filename_obfuscation" eval="False" />
         <field name="autovacuum_gc" eval="False" />
         <field name="base_url">http://cdn.localhost:9080</field>
-        <field name="force_db_for_default_attachment_rules">{}</field>
         <field name="options">{"auto_mkdir": true}</field>
     </record>
 </odoo>

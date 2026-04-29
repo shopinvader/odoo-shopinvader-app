@@ -1,0 +1,42 @@
+
+# search-engine
+odoo-addon-fs_image_thumbnail @ git+https://github.com/OCA/storage.git@refs/pull/470/head#subdirectory=fs_image_thumbnail
+odoo-addon-fs_base_multi_image @ git+https://github.com/OCA/storage.git@refs/pull/506/head#subdirectory=fs_base_multi_image
+odoo-addon-fs_product_multi_image @ git+https://github.com/OCA/storage.git@refs/pull/449/head#subdirectory=fs_product_multi_image
+odoo-addon-search_engine_image_thumbnail @ git+https://github.com/OCA/search-engine@refs/pull/228/head#subdirectory=search_engine_image_thumbnail
+odoo-addon-connector_elasticsearch @ git+https://github.com/OCA/search-engine@refs/pull/229/head#subdirectory=connector_elasticsearch
+
+# sale-channel
+odoo-addon-sale_channel_search_engine @ git+https://github.com/OCA/sale-channel@refs/pull/50/head#subdirectory=sale_channel_search_engine
+odoo-addon-sale_channel_search_engine_category @ git+https://github.com/OCA/sale-channel@refs/pull/51/head#subdirectory=sale_channel_search_engine_category
+odoo-addon-sale_channel_search_engine_product @ git+https://github.com/OCA/sale-channel@refs/pull/52/head#subdirectory=sale_channel_search_engine_product
+
+# shopinvader
+odoo-addon-shopinvader_sale_channel @ git+https://github.com/shopinvader/odoo-shopinvader.git@refs/pull/1654/head#subdirectory=shopinvader_sale_channel
+
+# shopinvader carrier
+
+odoo-addon-shopinvader_delivery_carrier @ git+https://github.com/shopinvader/odoo-shopinvader-carrier@refs/pull/21/head#subdirectory=shopinvader_delivery_carrier
+odoo-addon-shopinvader_api_delivery_carrier @ git+https://github.com/shopinvader/odoo-shopinvader-carrier@refs/pull/22/head#subdirectory=shopinvader_api_delivery_carrier
+
+# shopinvader payment
+odoo-addon-shopinvader_api_payment @ git+https://github.com/shopinvader/odoo-shopinvader-payment@refs/pull/104/head#subdirectory=shopinvader_api_payment
+odoo-addon-shopinvader_api_payment_cart @ git+https://github.com/shopinvader/odoo-shopinvader-payment@refs/pull/105/head#subdirectory=shopinvader_api_payment_cart
+odoo-addon-shopinvader_api_payment_provider_custom @ git+https://github.com/shopinvader/odoo-shopinvader-payment@refs/pull/106/head#subdirectory=shopinvader_api_payment_provider_custom
+odoo-addon-shopinvader_api_payment_provider_stripe @ git+https://github.com/shopinvader/odoo-shopinvader-payment@refs/pull/107/head#subdirectory=shopinvader_api_payment_provider_stripe
+odoo-addon-shopinvader_api_payment_provider_worldline @ git+https://github.com/shopinvader/odoo-shopinvader-payment@refs/pull/108/head#subdirectory=shopinvader_api_payment_provider_worldline
+
+# shopinvader catalog
+odoo-addon-base_url @ git+https://github.com/OCA/server-tools@refs/pull/3591/head#subdirectory=base_url
+odoo-addon-shopinvader_product_url @ git+https://github.com/shopinvader/odoo-shopinvader-catalog@refs/pull/13/head#subdirectory=shopinvader_product_url
+
+# shopinvader search-engine
+odoo-addon-shopinvader_search_engine @ git+https://github.com/shopinvader/odoo-shopinvader-search-engine@refs/pull/2/head#subdirectory=shopinvader_search_engine
+odoo-addon-shopinvader_search_engine_product_price @ git+https://github.com/shopinvader/odoo-shopinvader-search-engine@refs/pull/4/head#subdirectory=shopinvader_search_engine_product_price
+odoo-addon-shopinvader_search_engine_image @ git+https://github.com/shopinvader/odoo-shopinvader-search-engine@refs/pull/8/head#subdirectory=shopinvader_search_engine_image
+odoo-addon-shopinvader_search_engine_product_stock @ git+https://github.com/shopinvader/odoo-shopinvader-search-engine@refs/pull/11/head#subdirectory=shopinvader_search_engine_product_stock
+odoo-addon-shopinvader_search_engine_product_stock_state @ git+https://github.com/shopinvader/odoo-shopinvader-search-engine@refs/pull/12/head#subdirectory=shopinvader_search_engine_product_stock_state
+odoo-addon-shopinvader_search_engine_product_template_multi_link @ git+https://github.com/shopinvader/odoo-shopinvader-search-engine@refs/pull/13/head#subdirectory=shopinvader_search_engine_product_template_multi_link
+odoo-addon-shopinvader_search_engine_update @ git+https://github.com/shopinvader/odoo-shopinvader-search-engine@refs/pull/14/head#subdirectory=shopinvader_search_engine_update
+odoo-addon-shopinvader_search_engine_update_image @ git+https://github.com/shopinvader/odoo-shopinvader-search-engine@refs/pull/15/head#subdirectory=shopinvader_search_engine_update_image
+odoo-addon-shopinvader_search_engine_update_product_template_multi_link @ git+https://github.com/shopinvader/odoo-shopinvader-search-engine@refs/pull/21/head#subdirectory=shopinvader_search_engine_update_product_template_multi_link

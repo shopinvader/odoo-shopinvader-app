@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="shopinvader_new_channel_wizard_view_form" model="ir.ui.view">
+        <field name="model">shopinvader.new.channel.wizard</field>
+        <field name="arch" type="xml">
+            <form string="New Channel">
+                <p class="oe_grey">Please fill the following information to
+                create a new shopinvader backend
+                </p>
+                <group>
+                    <field name="se_backend_type" />
+                    <field name="se_backend_host" />
+                    <field name="lang_ids" widget="many2many_tags" />
+                    <field name="model_ids" widget="many2many_tags" />
+                    <field name="frontend_public_url" />
+                </group>
+                <footer>
+                    <button
+                        name="run"
+                        string="Confirm"
+                        type="object"
+                        class="btn-primary"
+                    />
+                    <button string="Cancel" class="btn-secondary" special="cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="shopinvader_new_channel_wizard_action">
+        <field name="name">New Channel</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">shopinvader.new.channel.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+        <field name="target">new</field>
+    </record>
+</odoo>

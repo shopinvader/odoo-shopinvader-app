@@ -17,7 +17,6 @@
     "author": "Akretion",
     "website": "https://github.com/shopinvader/odoo-shopinvader-app",
     "depends": [
-        "connector_elasticsearch",
         "sale_channel_search_engine_category",
         "sale_channel_search_engine_product",
         "shopinvader_anonymous_partner",

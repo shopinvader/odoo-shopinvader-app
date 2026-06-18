@@ -20,6 +20,7 @@ from odoo.addons.shopinvader_api_delivery_carrier.routers import (
     delivery_router,
 )
 from odoo.addons.shopinvader_api_payment.routers import payment_router
+from odoo.addons.shopinvader_api_payment_cart.routers import cart_payment_router
 from odoo.addons.shopinvader_api_sale.routers import sale_router
 from odoo.addons.shopinvader_api_settings.routers import settings_router
 from odoo.addons.shopinvader_fastapi_auth_partner.dependencies import (
@@ -59,6 +60,7 @@ class FastapiEndpoint(models.Model):
         return [
             cart_router,
             delivery_carrier_cart_router,
+            cart_payment_router,
         ]
 
     def _get_shopinvader_tags(self, params) -> list:

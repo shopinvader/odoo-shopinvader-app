@@ -11,6 +11,7 @@ from odoo import api, fields, models
 
 from odoo.addons.fastapi.dependencies import authenticated_partner_impl
 from odoo.addons.fastapi_auth_partner.routers import auth_router
+from odoo.addons.fastapi_captcha_altcha_backend.routers import altcha_router
 from odoo.addons.shopinvader_api_address.routers import address_router
 from odoo.addons.shopinvader_api_cart.routers import cart_router
 from odoo.addons.shopinvader_api_customer.routers import customer_router
@@ -19,8 +20,14 @@ from odoo.addons.shopinvader_api_delivery_carrier.routers import (
     delivery_carrier_router,
     delivery_router,
 )
+from odoo.addons.shopinvader_api_invoice.routers import invoice_router
+from odoo.addons.shopinvader_api_lead.routers import lead_router
 from odoo.addons.shopinvader_api_payment.routers import payment_router
 from odoo.addons.shopinvader_api_payment_cart.routers import cart_payment_router
+from odoo.addons.shopinvader_api_quotation.routers import (
+    quotation_cart_router,
+    quotation_router,
+)
 from odoo.addons.shopinvader_api_sale.routers import sale_router
 from odoo.addons.shopinvader_api_settings.routers import settings_router
 from odoo.addons.shopinvader_fastapi_auth_partner.dependencies import (
@@ -52,7 +59,11 @@ class FastapiEndpoint(models.Model):
             delivery_router,
             payment_router,
             sale_router,
+            quotation_router,
             settings_router,
+            lead_router,
+            invoice_router,
+            altcha_router,
         ]
 
     @api.model
@@ -61,6 +72,7 @@ class FastapiEndpoint(models.Model):
             cart_router,
             delivery_carrier_cart_router,
             cart_payment_router,
+            quotation_cart_router,
         ]
 
     def _get_shopinvader_tags(self, params) -> list:

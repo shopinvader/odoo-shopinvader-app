@@ -28,6 +28,8 @@
         "shopinvader_api_payment_provider_custom",
         "shopinvader_api_sale",
         "shopinvader_api_settings",
+        "shopinvader_api_invoice",
+        "shopinvader_api_lead",
         "shopinvader_sale_channel",
         "shopinvader_fastapi_auth_partner",
         "shopinvader_product_description",
@@ -38,6 +40,7 @@
         "shopinvader_search_engine_product_stock_state",
         "shopinvader_search_engine_update_image",
         "shopinvader_search_engine_update_product_template_multi_link",
+        "fastapi_captcha_altcha_backend",
     ],
     "external_dependencies": {"python": ["fastapi"]},
     "data": [

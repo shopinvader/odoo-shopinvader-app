@@ -169,18 +169,17 @@ class ShopinvaderNewChannelWizard(models.TransientModel):
                 indexes.append(Command.create(self._prepare_index_vals(model, lang)))
             thumbnails.append(Command.create(self._prepare_thumbnail_vals(model)))
 
-        ssl = self.se_backend_host.startswith("https")
-
         vals = {
             "name": self.name,
             "backend_type": self.se_backend_type,
             "index_ids": indexes,
             "image_field_thumbnail_size_ids": thumbnails,
             "image_data_url_strategy": "storage_url",
-            "ssl": ssl,
         }
         if self.se_backend_type == "elasticsearch":
             vals["es_server_host"] = self.se_backend_host
+            ssl = self.se_backend_host.startswith("https")
+            vals["ssl"] = ssl
         elif self.se_backend_type == "typesense":
             host = urlparse(self.se_backend_host)
             vals.update(
